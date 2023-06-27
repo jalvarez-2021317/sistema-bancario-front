@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Navbar } from "../../ui";
-import { DcPage, HeroPage, MarvelPage, SearchPage } from "../pages";
+
 import { AdminPage } from "../pages/AdminPage";
 import { UserPage } from "../pages/UserPage";
 
@@ -13,8 +13,7 @@ export const HeroesRoutes = () => {
             <Navbar />
             <div className="container">
                 <Routes>
-                    <Route path="marvel" element={<MarvelPage />} />
-                    <Route path="dc" element={<DcPage />} />
+                    
 
                     {/* Rutas de Admin */}
                     <Route path="admin" 
@@ -28,13 +27,10 @@ export const HeroesRoutes = () => {
                     />
 
 
-                    <Route path="search" element={<SearchPage />} />
-                    <Route path="hero/:id" element={<HeroPage />} />
-
                     {/* Rutas de User */}
                     <Route path="user" 
                             element={ 
-                                    ( rol === 'USER_ROLE') ?
+                                    ( rol === 'USER_ROL') ?
                                                             <UserPage />
                                                             :
                                                             <Navigate to='/search' /> 
@@ -42,7 +38,7 @@ export const HeroesRoutes = () => {
                     />
 
                     {/* Search, Hero by ID */}
-                    <Route path="/" element={<Navigate to="/marvel" />} />
+                 
                 </Routes>
             </div>
         </>

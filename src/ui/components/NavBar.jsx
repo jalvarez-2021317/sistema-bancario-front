@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../auth/context/AuthContext';
-import { DcPage } from '../../heroes';
+
 import logo from '..//..//..//assets/heroes/logoBanco.jpg';
 
 export const Navbar = () => {
@@ -22,6 +22,7 @@ export const Navbar = () => {
     //Probar en incognito
 
     const rol = JSON.parse(localStorage.getItem('rol'));
+    console.log('Valor de rol:', rol);
 
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark padding-2">
@@ -31,13 +32,13 @@ export const Navbar = () => {
                 to="/"
             >
                 <img src={logo} alt="Logo" style={{ width: '250px' }} />
-                Asociaciones
+               
             </Link>
 
             <div className="navbar-collapse">
                 <div className="navbar-nav">
 
-                    <NavLink
+                    {/* <NavLink
                         className={({ isActive }) => `nav-link ${isActive ? `active` : ``}`}
                         to="/marvel"
                     >
@@ -57,7 +58,7 @@ export const Navbar = () => {
                         to="/search"
                     >
                         Search
-                    </NavLink>
+                    </NavLink> */}
 
 
                     {
@@ -66,7 +67,7 @@ export const Navbar = () => {
                                 className={({ isActive }) => `nav-link ${isActive ? `active` : ``}`}
                                 to="/admin"
                             >
-                                Admin
+                                Agregar
                             </NavLink>
                             :
                             ""
@@ -74,7 +75,7 @@ export const Navbar = () => {
 
 
                     {
-                        (rol === 'USER_ROLE')
+                        (rol === 'USER_ROL')
                             ? <NavLink
                                 className={({ isActive }) => `nav-link ${isActive ? `active` : ``}`}
                                 to="/user"

@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
 import { apiLogin } from "../api/apiAuthUser";
+//import './LoginPage.css';
 
 export const LoginPage = () => {
   const { userName, password, onInputChange, onResetForm } = useForm({
@@ -64,9 +65,7 @@ export const LoginPage = () => {
           <button type="submit" className="btn btn-primary">
             Login
           </button>
-          <Link to="/register" className="btn btn-primary">
-            Registrarse
-          </Link>
+          
         </form>
       </div>
     </>
