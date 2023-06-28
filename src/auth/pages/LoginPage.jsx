@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
 import { apiLogin } from "../api/apiAuthUser";
-//import './LoginPage.css';
+import './LoginPage.css';
 
 export const LoginPage = () => {
   const { userName, password, onInputChange, onResetForm } = useForm({
@@ -37,7 +37,7 @@ export const LoginPage = () => {
 
   return (
     <>
-      <div className="container mt-5">
+      <div className="containerjuanon mt-5">
         <h1>Login</h1>
         <hr />
         <form onSubmit={onSubmitLogin}>

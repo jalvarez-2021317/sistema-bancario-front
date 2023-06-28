@@ -73,6 +73,20 @@ export const Navbar = () => {
                             ""
                     }
 
+{
+                        (rol === 'ADMIN_ROLE')
+                            ? <NavLink
+                                className={({ isActive }) => `nav-link ${isActive ? `active` : ``}`}
+                                to="/usersA"
+                            >
+                                Usuarios
+                            </NavLink>
+                            :
+                            ""
+                    }
+
+
+
 
                     {
                         (rol === 'USER_ROL')
