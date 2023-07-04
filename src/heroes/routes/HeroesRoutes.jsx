@@ -4,6 +4,11 @@ import { Navbar } from "../../ui";
 import { AdminPage } from "../pages/AdminPage";
 import { UserPage } from "../pages/UserPage";
 import { UsersA } from "../pages/UsersA";
+import { CuentasA } from "../pages/CuentasA";
+import { UpdateUser } from "../pages/UpdateUser";
+
+
+
 
 export const HeroesRoutes = () => {
 
@@ -30,7 +35,27 @@ export const HeroesRoutes = () => {
                     <Route path="usersA"
                         element={
                             (rol === 'ADMIN_ROLE') ?
-                                <UsersA/>
+                                <UsersA />
+                                :
+                                <Navigate to='/search' />
+
+                        }
+                    />
+
+                    <Route path="cuentasA"
+                        element={
+                            (rol === 'ADMIN_ROLE') ?
+                                <CuentasA />
+                                :
+                                <Navigate to='/search' />
+
+                        }
+                    />
+
+                    <Route path="UpdateUser"
+                        element={
+                            (rol === 'ADMIN_ROLE') ?
+                              <UpdateUser/>
                                 :
                                 <Navigate to='/search' />
 

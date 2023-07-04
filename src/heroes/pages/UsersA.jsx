@@ -1,48 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
+import UsersLogic from '../components/UserA';
+import { Link } from 'react-router-dom';
+
 
 export const UsersA = () => {
-    const [users, setUsers] = useState([{}]);
+  const { users, deleteUser } = UsersLogic();
+  const [selectedUserId, setSelectedUserId] = useState(null);
 
-    useEffect(() => {
-        getUsers();
-    }, []);
 
-    // const getUsers = async () => {
-    //     try {
-    //         const response = await axios.get('http://localhost:8080/api/user/mostrar');
-    //         const {data} = response.data;
-    //         setUsers(data.listaUsers);
-    //         console.log(data.listaUsers);
-    //     } catch (error) {
-    //         console.error('Error al obtener los usuarios:', error);
-    //     }
-    // };
+  const handleDeleteUser = (userId) => {
+    setSelectedUserId(userId);
+    deleteUser(userId);
+  };
 
-    const getUsers = async () => {
-        try {
-            const {data} = await axios.get('http://localhost:8080/api/user/mostrar')
-            const newusers = data.listaUsers
-            setUsers(newusers)
-            console.log(newusers)
-            return data
-        } catch (error) {
-            console.error('Error al obtener los usuarios:', error);
-        }
-    };
 
-    return (
-        <div>
-            <h1>Usuarios</h1>
-            <ul>
-                {users.map((user, index) => (
-                    <li key={user.id || index}>
-                        <p>Nombre: {user.nombre}</p>
-                        <p>UserName: {user.userName}</p>
-                        {/* Mostrar las demás propiedades del usuario */}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Usuarios</h1>
+      <div className="card-group">
+        {users.map((user, index) => (
+          <div className="card" key={user.id || index}>
+            <div className="card-body">
+              <h5 className="card-title">{user.nombre}</h5>
+              <h6 className='card-subtitle mb-2 text-muted'>{user.userName}</h6>
+              | <Link to="/UpdateUser">
+                <button className="btn btn-dark">Editar</button>
+              </Link>
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={() => handleDeleteUser(user._id)}
+              >
+                Eliminar
+              </button>
+              {/* Aquí puedes agregar más información del usuario si deseas */}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
+
+export default UsersA;

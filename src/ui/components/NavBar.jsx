@@ -32,7 +32,7 @@ export const Navbar = () => {
                 to="/"
             >
                 <img src={logo} alt="Logo" style={{ width: '250px' }} />
-               
+
             </Link>
 
             <div className="navbar-collapse">
@@ -73,7 +73,7 @@ export const Navbar = () => {
                             ""
                     }
 
-{
+                    {
                         (rol === 'ADMIN_ROLE')
                             ? <NavLink
                                 className={({ isActive }) => `nav-link ${isActive ? `active` : ``}`}
@@ -84,6 +84,21 @@ export const Navbar = () => {
                             :
                             ""
                     }
+
+                    
+{
+                        (rol === 'ADMIN_ROLE')
+                            ? <NavLink
+                                className={({ isActive }) => `nav-link ${isActive ? `active` : ``}`}
+                                to="/cuentasA"
+                            >
+                                Cuentas
+                            </NavLink>
+                            :
+                            ""
+                    }
+
+                   
 
 
 

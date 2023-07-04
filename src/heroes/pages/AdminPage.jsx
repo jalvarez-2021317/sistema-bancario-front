@@ -12,19 +12,19 @@ const generateAccountNumber = () => {
 
 export const AdminPage = () => {
 
-
-
   const [formData, setFormData] = useState({
     nombre: '',
     userName: '',
     password: '',
-    noCuenta: '',
-    dpi: '',
-    celular: '',
+    Dpi: '',
+    Celular: '',
+    direccion: '',
     email: '',
+    NamefromWork: '',
+    IngresosMensauales: 0
   });
 
-  const { nombre, userName, noCuenta ,password, dpi, celular, email } = formData;
+  const { nombre, userName, password, Dpi, Celular, direccion, email, NamefromWork, IngresosMensauales } = formData;
 
   const handleChange = (e) => {
     setFormData({
@@ -37,17 +37,18 @@ export const AdminPage = () => {
     e.preventDefault();
 
     const generatedAccountNumber = generateAccountNumber();
-  
 
     try {
       const response = await axios.post(`${API_URL}agregar`, {
         nombre,
         userName,
         password,
-        noCuenta,
-        dpi,
-        celular,
+        Dpi,
+        Celular,
+        direccion,
         email,
+        NamefromWork,
+        IngresosMensauales
       });
 
       if (response.status === 201) {
@@ -68,10 +69,12 @@ export const AdminPage = () => {
       nombre: '',
       userName: '',
       password: '',
-      noCuenta: generatedAccountNumber,
-      dpi: '',
-      celular: '',
+      Dpi: '',
+      Celular: '',
+      direccion: '',
       email: '',
+      NamefromWork: '',
+      IngresosMensauales: 0
     });
   };
 
@@ -80,16 +83,9 @@ export const AdminPage = () => {
   };
   const navigate = useNavigate();
 
-// Generar número de cuenta aleatorio
-
-
-  // Función para generar un número de cuenta aleatorio
- 
-
   return (
     <>
       <div className="container mt-5">
-        
         <h1>Register</h1>
         <hr />
         <form onSubmit={handleSubmit}>
@@ -124,24 +120,12 @@ export const AdminPage = () => {
             />
           </div>
           <div className="mb-3">
-            <label className="form-label">No. Cuenta</label>
-            <input
-              type="text"
-              className="form-control"
-              name="noCuenta"
-              value={noCuenta}
-              onChange={handleChange}
-              disabled 
-              readOnly
-            />
-          </div>
-          <div className="mb-3">
             <label className="form-label">DPI</label>
             <input
               type="text"
               className="form-control"
-              name="dpi"
-              value={dpi}
+              name="Dpi"
+              value={Dpi}
               onChange={handleChange}
             />
           </div>
@@ -150,8 +134,18 @@ export const AdminPage = () => {
             <input
               type="text"
               className="form-control"
-              name="celular"
-              value={celular}
+              name="Celular"
+              value={Celular}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Dirección</label>
+            <input
+              type="text"
+              className="form-control"
+              name="direccion"
+              value={direccion}
               onChange={handleChange}
             />
           </div>
@@ -162,6 +156,26 @@ export const AdminPage = () => {
               className="form-control"
               name="email"
               value={email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Nombre de Trabajo</label>
+            <input
+              type="text"
+              className="form-control"
+              name="NamefromWork"
+              value={NamefromWork}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Ingresos Mensuales</label>
+            <input
+              type="number"
+              className="form-control"
+              name="IngresosMensauales"
+              value={IngresosMensauales}
               onChange={handleChange}
             />
           </div>
