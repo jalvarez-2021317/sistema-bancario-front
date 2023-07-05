@@ -4,7 +4,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 
 export const UpdateUser = () => {
-  const { id } = useParams(); // Obtener el ID del usuario de la URL
+  //const { id } = useParams(); // Obtener el ID del usuario de la URL
   const selectedUserId = window.localStorage.getItem('selectedUserId');
 
   // Estado para almacenar los datos del usuario
