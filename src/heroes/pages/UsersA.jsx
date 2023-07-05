@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import UsersLogic from '../components/UserA';
 import { Link } from 'react-router-dom';
 
-
 export const UsersA = () => {
   const { users, deleteUser } = UsersLogic();
   const [selectedUserId, setSelectedUserId] = useState(null);
-
 
   const handleDeleteUser = (userId) => {
     setSelectedUserId(userId);
     deleteUser(userId);
   };
 
+  const handleEditUser = (userId) => {
+    // Guarda el ID del usuario en la Local Storage
+    window.localStorage.setItem('selectedUserId', userId);
+  };
 
   return (
     <div>
@@ -24,7 +26,8 @@ export const UsersA = () => {
               <h5 className="card-title">{user.nombre}</h5>
               <h6 className='card-subtitle mb-2 text-muted'>{user.userName}</h6>
               | <Link to="/UpdateUser">
-                <button className="btn btn-dark">Editar</button>
+                {/* Asigna handleEditUser al evento onClick */}
+                <button className="btn btn-dark" onClick={() => handleEditUser(user._id)}>Editar</button>
               </Link>
               <button
                 type="button"
