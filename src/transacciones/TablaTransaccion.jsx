@@ -9,11 +9,8 @@ const TransaccionesTabla = () => {
   }, []);
 
   const obtenerTransacciones = async () => {
-    // Obtener el ID del usuario logueado desde el almacenamiento local
-    const usuarioId = localStorage.getItem('userId');
-
     // Llamar a la función de la API para obtener las transacciones del usuario logueado
-    const data = await getTransaccionesPorUsuario(usuarioId);
+    const data = await getTransaccionesPorUsuario();
 
     if (data) {
       setTransacciones(data);
